@@ -8,21 +8,21 @@ const Hero = () => {
   return (
     <>
       <div className="w-full top-5 absolute sm:px-20 px-5">
-      <nav className="flex justify-between items-center w-full mb-10">
-        <Image src={logo} alt="sumz_logo" className="w-28 object-contain" />
-        <div className="flex gap-3">
-          <button
-            className="black_btn flex items-center justify-center gap-1"
-            type="button"
-            onClick={() =>
-              window.open("https://github.com/Ashuuniyal12/AI_Summarizer")
-            }
-          >
-            GitHub <AiFillGithub />
-          </button>
-          <ThemeSwitcher />
-        </div>
-      </nav>
+        <nav className="flex justify-between items-center w-full mb-10">
+          <Image src={logo} alt="sumz_logo" className="w-28 object-contain" />
+          <div className="flex gap-3">
+            <button
+              className="black_btn flex items-center justify-center gap-1"
+              type="button"
+              onClick={() =>
+                window.open("https://github.com/AbhishekBhatt072003/Article-Summarizer")
+              }
+            >
+              GitHub <AiFillGithub />
+            </button>
+            <ThemeSwitcher />
+          </div>
+        </nav>
       </div>
 
       <header className="w-full flex justify-center items-center flex-col mt-0 top-0 ">

@@ -2,7 +2,7 @@
 import { copy, linkIcon, loader, tick, plane } from "@/assets";
 import Image from "next/image";
 import { useState, useEffect, FormEvent } from "react";
-import {FaRegPaperPlane} from "react-icons/fa";
+import { FaRegPaperPlane } from "react-icons/fa";
 
 const Demo = () => {
   const [article, setArticle] = useState({
@@ -10,13 +10,13 @@ const Demo = () => {
     summary: "",
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error ,setError] = useState<boolean>(false);
-  const [allArticles, setAllArticles] = useState<{url:string, summary:string}[]>([]);
-  const [copied, setCopied] = useState<boolean|string>();
+  const [error, setError] = useState<boolean>(false);
+  const [allArticles, setAllArticles] = useState<{ url: string, summary: string }[]>([]);
+  const [copied, setCopied] = useState<boolean | string>();
 
-   // Load data from localStorage on mount
-   useEffect(() => {
-    const articlesFromLocalStorage: any[] | null  = JSON.parse(
+  // Load data from localStorage on mount
+  useEffect(() => {
+    const articlesFromLocalStorage: any[] | null = JSON.parse(
       localStorage.getItem("articles") || "null"
     );
 
@@ -37,7 +37,7 @@ const Demo = () => {
 
     try {
       const url = `https://article-extractor-and-summarizer.p.rapidapi.com/summarize?url=${article.url}&length=3`;
-     
+
       const data = await fetch(url, {
         method: "GET",
         headers: {
@@ -45,7 +45,7 @@ const Demo = () => {
           "X-RapidAPI-Host": "article-extractor-and-summarizer.p.rapidapi.com",
         }
       });
-     
+
       const response = await data.json();
       console.log(response)
       const newArticle = { ...article, summary: response.summary };
@@ -55,7 +55,7 @@ const Demo = () => {
       setArticle(newArticle);
       setAllArticles(updatedAllArticles);
       localStorage.setItem("articles", JSON.stringify(updatedAllArticles));
-    
+
     } catch (error) {
       // Handle error if necessary
       console.error(error);
@@ -65,13 +65,13 @@ const Demo = () => {
     }
   }
 
-  const handleCopy:any = (copyUrl:string) => {
+  const handleCopy: any = (copyUrl: string) => {
     setCopied(copyUrl);
     navigator.clipboard.writeText(copyUrl);
     setTimeout(() => setCopied(false), 3000);
   };
 
-  const handleKeyDown = (e:any) => {
+  const handleKeyDown = (e: any) => {
     if (e.keyCode === 13) {
       onSubmit(e);
     }
@@ -104,7 +104,7 @@ const Demo = () => {
             type="submit"
             className="submit_btn peer-focus:border-gray-700 peer-focus:text-gray-700 dark:text-white"
           >
-            <FaRegPaperPlane/>
+            <FaRegPaperPlane />
           </button>
         </form>
         {/* Browse URL History */}
